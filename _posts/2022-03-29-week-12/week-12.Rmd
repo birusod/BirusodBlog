@@ -1,0 +1,108 @@
+---
+title: "Week 12: Baby names"
+description: |
+  R Script for Tidytuesday Week-11.
+author:
+  - name: Oumarou Diallo
+date: 2022-03-28
+preview: mybaby.jpeg
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+---
+
+
+## Setup & Libraries
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(tidytuesdayR)
+library(rmarkdown)
+library(ggcharts)
+library(hrbrthemes)
+hrbrthemes::import_roboto_condensed()
+library(scales)
+library(MetBrewer)
+library(showtext)
+
+showtext_auto()
+font_add_google("Quicksand")
+font_add_google("Fira Sans Condensed")
+col1 <- met.brewer("Lakota", 6)[1]
+col2 <- met.brewer("Tsimshian", 7)[3]
+```
+
+## Dataset
+
+### Loading
+
+```{r, message=FALSE}
+tt <- tt_load("2022-03-22")
+```
+
+
+### Exploring and wrangling 
+
+```{r}
+data <- tt$babynames %>% 
+  filter(year == 2017) %>% 
+  group_by(name, sex) %>% 
+  summarise(n = sum(n)) %>% 
+  mutate(
+    sex = case_when(
+      sex == 'M' ~ 'BOYS',
+      TRUE       ~ 'GIRLS')
+    )
+```
+
+### Final output
+
+```{r}
+paged_table(data)
+```
+
+
+## Plotting
+
+```{r, fig.width=12, fig.height=15}
+plot_w12 <- data  %>% 
+  bar_chart(
+    x     = name, 
+    y     = n, 
+    facet = sex, 
+    top_n = 10) +
+  theme_ng()+
+  labs(x     ='', 
+       y     = '', 
+       title = 'BABYNAMES IN 2017\nPopularity of names by gender') +
+  theme(
+     panel.grid.major.x = element_line(
+                               color = 'white', 
+                               size  = .01),
+     panel.grid.minor.x = element_blank(),
+     panel.grid.major.y = element_blank(),
+     panel.grid.minor.y = element_blank(),
+     plot.title         = element_text(
+                               family = "Quicksand",   face = 'bold', 
+                               size = 30,              hjust= .5, 
+                               color = col1),
+     plot.subtitle      = element_text(family = "Fira Sans Condensed"),
+     axis.text.x        = element_text(
+                                family = "Optima", 
+                                color = 'white',
+                                face = 'italic'),
+     axis.text.y        = element_text(
+                                family = "Luminari",  color = 'dodgerblue', 
+                                size = 20,            face  = 'bold'),
+     strip.text         = element_text(
+                                color = 'white', 
+                                size =20)
+     )
+  
+
+plot_w12
+```
+
+

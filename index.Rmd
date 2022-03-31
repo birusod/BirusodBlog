@@ -1,0 +1,33 @@
+---
+title: "Oumar Diallo"
+image: "img/profile1.png"
+description: |
+  My R Learning Journey
+site: distill::distill_website
+links:
+  - label: '<i class="fab fa-linkedin"></i> LinkedIn'
+    url: "https://www.linkedin.com/in/diallooumarou/"
+  - label: '<i class="fab fa-twitter"></i> Twitter'
+    url: "https://twitter.com/birusod"
+  - label: '<i class="fab fa-github"></i> GitHub'
+    url: "https://github.com/birusod"
+  - label: '<i class="fas fa-envelope"></i> Email'
+    url: "mailto:birusod@gmail.com"
+output:
+  postcards::trestles
+---
+ 
+## Hello <span class="wave">👋</span> - Salut <span class="wave">👋</span> - Jamwaali <span class="wave">👋</span>
+
+A Fulani from [Mali](https://en.wikipedia.org/wiki/Mali) lost in the jungle of the [Northwestern United States](https://en.wikipedia.org/wiki/Northwestern_United_States).
+<br>
+<br>
+I love working with data. I am a self-taught R Language fanatic. This blog is just to share my code and have fun (for now!).
+<br>
+<br>
+Check out my posts. Happy learning / sharing !
+
+
+
+
+

@@ -1,0 +1,23 @@
+name: "website"
+title: "BIRUSOD"
+description: |
+  Birus Learn R
+output_dir: "_site"
+theme: theme.css
+navbar:
+  logo:
+    image: img/profile4.png
+  search: false
+  right:
+    - text: "About"
+      href: index.html
+    - text: "Posts"
+      href: blog1.html
+    - icon: fa fa-github
+      href: https://github.com/birusod
+    - icon: fa fa-linkedin
+      href: https://www.linkedin.com/in/diallooumarou/
+    - icon: fa fa-twitter
+      href: https://twitter.com/birusod
+
+output: distill::distill_article
