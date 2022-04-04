@@ -1,7 +1,7 @@
 ---
 title: "Week 12: Baby names"
 description: |
-  R Script for Tidytuesday Week-11.
+  R Script for Tidytuesday Week-12.
 author:
   - name: Oumarou Diallo
 date: 2022-03-28

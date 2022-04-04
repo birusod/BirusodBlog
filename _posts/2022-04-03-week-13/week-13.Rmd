@@ -1,0 +1,226 @@
+---
+title: "week-13: College Sports"
+description: |
+  Exploring US college sports (data from [tidytuesday project](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-29/readme.md)
+author:
+  - name: Oumarou Diallo
+    url: {}
+date: 2022-04-03
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+---
+
+## Setup & Libraries
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(scales)
+library(tidytuesdayR)
+library(rmarkdown)
+library(ggcharts)
+library(hrbrthemes)
+hrbrthemes::import_roboto_condensed()
+
+library(ggtext)
+library(showtext)
+library(patchwork)
+font_add_google('Bree Serif')
+showtext_auto()
+# For more on showtext, see this [link](https://babichmorrowc.github.io/post/2019-10-11-google-fonts/) or this [link](https://cran.r-project.org/web/packages/showtext/vignettes/introduction.html)
+
+```
+
+
+## Dataset
+
+### Loading
+```{r}
+tt <- tt_load("2022-03-29")
+data <- tt$sports
+```
+
+### Exploring and wrangling 
+
+```{r}
+# Sports categories
+data %>% 
+  count(sports, sort = TRUE)  
+```
+
+
+```{r}
+# ***** Main plot data: total participants par sports category (Men + Women)
+
+data_main_plot <- data %>% 
+  select(sports, partic_men, partic_women) %>%                     # cols of interest
+  mutate_if(is.double, ~replace(., is.na(.), 0)) %>% 
+  mutate(
+    partic_total = partic_men + partic_women,
+    sports       = case_when(
+      sports == 'Track and Field, X-Country' ~ 'TF & X-Country',
+      sports == 'All Track Combined'         ~ 'All Track Comb.',
+      sports == 'Track and Field, Outdoor'   ~ 'TF Outdoor',
+      sports == 'Track and Field, Indoor'    ~ 'TF Indoor',
+      sports == 'Swimming and Diving'        ~ 'Swim. & Diving',
+      sports == 'Synchronized Swimming'      ~ 'Sync. Swimming',
+      TRUE                                   ~ sports)              # Renaming to shorten categ names before plotting
+    ) %>% 
+  group_by(sports) %>%
+  summarise(tot_part = sum(partic_total)) %>% 
+  filter(tot_part > 0)
+
+
+# ***** By gender plot: top 5 sports  by gender
+
+by_gender_data <- data %>% 
+  select(
+    sports, 
+    partic_men, partic_women, 
+    total_rev_menwomen, total_exp_menwomen) %>% 
+  mutate_if(is.double, ~replace(., is.na(.), 0)) %>%
+  group_by(sports) %>% 
+  summarise(
+    MEN   = sum(partic_men), 
+    WOMEN = sum(partic_women),
+    rev   = sum(total_rev_menwomen),
+    exp   = sum(total_exp_menwomen)) %>% 
+  mutate(tot = MEN + WOMEN) %>% 
+  pivot_longer(
+    cols      = c(MEN, WOMEN),
+    names_to  = 'gender',
+    values_to = 'participants') %>% 
+  mutate(col = case_when(
+    sports == 'Soccer' ~ 'yes', 
+    TRUE               ~ 'no'))
+
+
+
+
+# ***** Cashflow plot: top 5 sports  by total revenue and expenditure
+
+exp_rev_data <- data %>% 
+  select(
+    sports,
+    partic_men, partic_women, 
+    total_rev_menwomen, total_exp_menwomen) %>% 
+  mutate_if(is.double, ~replace(., is.na(.), 0)) %>%
+  group_by(sports) %>% 
+  summarise(
+    REVENUE     = sum(total_rev_menwomen),
+    EXPENDITURE = sum(total_exp_menwomen)) %>% 
+  pivot_longer(
+    cols      = c(REVENUE, EXPENDITURE),
+    names_to  = 'cashflow',
+    values_to = 'amount') %>% 
+  mutate(amount = amount / 1000000000)
+
+```
+
+
+### Final output
+
+```{r}
+paged_table(data_main_plot)
+```
+
+
+```{r}
+paged_table(by_gender_data)
+```
+
+
+```{r}
+paged_table(exp_rev_data)
+```
+
+## Plotting
+
+```{r}
+title_main    <- "EXPLORING COLLEGE SPORTS"
+
+subtitle_main <- "<span style = 'color:black'> - **Overall**, *Combined Track & Field*, *Football*, *Soccer* are the highest level of participation</span><span style = 'color:black'>**(>400,000)**.</span><br><span style = 'color:black'> -  **Soccer**</span><span style = 'color:black'> comes in **top 3** for women and **top 4** for men.</span><br><span style = 'color:black'> - Trends for **Revenues** & **Expenses** are similar accross sports.</span>"
+
+plot_1 <- data_main_plot %>% 
+  ggplot(aes(
+    tot_part,
+    fct_reorder(sports, tot_part))
+    )+
+  geom_col(fill = '#a9a9a9', alpha = .9)+
+  geom_text(
+    aes(label = tot_part),  
+    hjust=-.2, fontface = 'bold', size = 6, color = 'black')+
+  scale_x_continuous(
+    limits = c(0, 700000),
+    breaks = c(0, 200000, 400000, 600000),
+    labels = c('0', '200K', '400K', '600K'),
+    position = 'top',
+    expand = c(0, 0)
+    )+
+  labs(x        = '', 
+       y        = '',
+       title    = title_main,
+       subtitle = subtitle_main,
+       caption  = 'Data: Tidytuesday W13')+
+  theme(
+    panel.background    = element_blank(),
+    plot.background     = element_rect(fill = '#e1d8e8', color = '#e1d8e8'),
+    panel.grid          = element_blank(),
+    axis.ticks          = element_blank(),
+    axis.text.y         = element_text(face = 'bold', size = 14, color = '#010203'),
+    axis.text.x         = element_text(face='italic', size = 14),
+    plot.title.position = 'plot',
+    plot.title          = element_markdown(family = 'Bree Serif', size = 20, color = '#002a77'),
+    plot.subtitle       = element_markdown(margin = margin(0, 0, .4, 0, unit = 'cm'), size = 12),
+    plot.margin         = unit(c(5, 1, 0, 0), "pt")
+  )
+
+
+plot_2 <- by_gender_data %>% 
+  bar_chart(sports, participants, facet = gender, top_n = 5, fill = col)+
+  scale_y_continuous(
+    name   = '',
+    labels = scales::comma_format(),
+    breaks = c(0, 200000, 400000))+
+  scale_fill_manual(values = c('darkgrey', '#DB804E'))+
+  labs(
+    x     = '', 
+    title = 'TOP 5: PARTICIPATION BY GENDER')+
+  theme_ggcharts(ticks = 'X')+
+  theme(
+    legend.position = 'none',
+    plot.title      = element_text(hjust = .5, face = 'bold'),
+    axis.text       = element_text(face = 'bold'),
+    plot.background = element_rect(fill = '#C1C1C1', color = '#C1C1C1'))
+
+
+
+
+plot_3 <- exp_rev_data  %>% 
+  bar_chart(sports, amount, facet = cashflow, top_n = 5, fill = cashflow)+
+  scale_y_continuous(
+    name   = '',
+    labels = scales::comma_format())+
+  scale_fill_manual(values = c('#7d2454', '#304E57'))+
+  labs(
+    x     = '', 
+    title = 'TOP 5: REVENUE & EXPENDITURE (Million USD)')+
+  theme_ggcharts(ticks = 'X')+
+  theme(
+    legend.position = 'none',
+    plot.title = element_text(hjust = .5, face = 'bold'),
+    axis.text = element_text(face = 'bold'),
+    plot.background = element_rect(fill = '#C1C1C1', color = '#C1C1C1'))
+
+```
+
+
+```{r}
+pp <- plot_1 + 
+  inset_element(plot_2, 0.35, 0.01, .95, .4) + # left-bottom-right-top
+  inset_element(plot_3, 0.35, 0.401, .95, .75) 
+pp
+```
+
