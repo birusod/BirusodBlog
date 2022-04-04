@@ -141,7 +141,7 @@ paged_table(exp_rev_data)
 ```{r}
 title_main    <- "EXPLORING COLLEGE SPORTS"
 
-subtitle_main <- "<span style = 'color:black'> - **Overall**, *Combined Track & Field*, *Football*, *Soccer* are the highest level of participation</span><span style = 'color:black'>**(>400,000)**.</span><br><span style = 'color:black'> -  **Soccer**</span><span style = 'color:black'> comes in **top 3** for women and **top 4** for men.</span><br><span style = 'color:black'> - Trends for **Revenues** & **Expenses** are similar accross sports.</span>"
+subtitle_main <- "<span style = 'color:black'> - Most students prefer **Combined Track & Field**, **Football**, and **Soccer** with more than </span><span style = 'color:black'>**(400,000)**</span> participants each.<br><span style = 'color:black'> -  **Soccer**</span><span style = 'color:black'> comes in **top 3** for women and **top 4** for men.</span><br><span style = 'color:black'> - Trends for **Revenues** & **Expenses** are similar accross sports.</span>"
 
 plot_1 <- data_main_plot %>% 
   ggplot(aes(
@@ -219,8 +219,8 @@ plot_3 <- exp_rev_data  %>%
 
 ```{r}
 pp <- plot_1 + 
-  inset_element(plot_2, 0.35, 0.01, .95, .4) + # left-bottom-right-top
-  inset_element(plot_3, 0.35, 0.401, .95, .75) 
+  inset_element(plot_2, 0.35, 0.01, .98, .4) + # left-bottom-right-top
+  inset_element(plot_3, 0.35, 0.403, .98, .75) 
 pp
 ```
 
