@@ -4,8 +4,8 @@ description: |
   Exploring US college sports (data from [tidytuesday project](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-29/readme.md)
 author:
   - name: Oumarou Diallo
-    url: {}
 date: 2022-04-03
+preview: sports.jpeg
 output:
   distill::distill_article:
     self_contained: false
