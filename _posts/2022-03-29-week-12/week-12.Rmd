@@ -4,7 +4,7 @@ description: |
   R Script for Tidytuesday Week-12.
 author:
   - name: Oumarou Diallo
-date: 2022-03-17
+date: 2022-03-24
 preview: mybaby.jpeg
 output:
   distill::distill_article:
