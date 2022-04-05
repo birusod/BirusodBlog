@@ -35,7 +35,7 @@ tt <- tt_load("2022-03-15")
 ```
 
 
-### Exploring and wrangling 
+### Exploring and wrangling: 
 
 ```{r}
 data <- tt$cran %>%

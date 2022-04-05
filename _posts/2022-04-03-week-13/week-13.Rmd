@@ -1,7 +1,7 @@
 ---
-title: "week-13: College Sports"
+title: "Week-13: College Sports"
 description: |
-  Exploring US college sports (data from [tidytuesday project](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-29/readme.md)
+  Exploring US college sports.
 author:
   - name: Oumarou Diallo
 date: 2022-04-03
@@ -217,10 +217,11 @@ plot_3 <- exp_rev_data  %>%
 ```
 
 
-```{r}
+```{r, fig.width=20, fig.height=15}
 pp <- plot_1 + 
   inset_element(plot_2, 0.35, 0.01, .98, .4) + # left-bottom-right-top
   inset_element(plot_3, 0.35, 0.403, .98, .75) 
 pp
 ```
+
 
