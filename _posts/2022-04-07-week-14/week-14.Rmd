@@ -1,0 +1,228 @@
+---
+title: "week-14: Digital publications"
+description: |
+  Exploring US digital news organisations.
+author:
+  - name: Oumarou Diallo
+date: 2022-04-07
+preview: w14_dig_pub.jpeg
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+---
+
+## Setup & Libraries
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+
+#if (!require("pacman")) install.packages("pacman")
+pacman::p_load(
+  tidytuesdayR, tidyverse, janitor, here, scales, ggthemes, broom, rmarkdown,
+  mapdata, geojsonio, rgdal, gpclib, rgeos,
+  viridis, showtext)
+
+font_add_google('Roboto', 'Roboto')
+showtext_auto()
+mpal <- rev(magma(10))[c(-1,-12)]
+
+```
+
+
+
+## Dataset
+
+### Loading
+```{r}
+tt <- tt_load('2022-04-05')
+
+```
+
+
+### Exploring and wrangling 
+
+```{r}
+d <- tt$news_orgs %>% 
+  filter(country == 'United States') %>%                 # keep only US org
+  select(publication_name, owner, city, state, 
+         primary_language, tax_status_current,
+         year_founded) %>%                               # Select cols of interets
+  filter(!is.na(primary_language)) %>% 
+  mutate(primary_language = case_when(
+    primary_language == 'Bilingual (Spanish & English)' ~ 'Bilingual',
+    primary_language == 'Spanish, English' ~ 'Bilingual',
+    TRUE ~ primary_language
+  ))                                                     # Merge prim lang categories
+
+#test_df <- d %>% filter(is.na(state))                   # Check if duplicate exist
+
+
+
+# After googling organzation missing city/state
+
+# base 
+d[d$publication_name == 'Grist', ]$city = 'Seattle'
+d[d$publication_name == 'Grist', ]$state = 'WA'
+
+
+# dplyr case_when
+d <- d %>% 
+  mutate(
+    city = case_when(
+      publication_name == 'Haddam Now'          ~ 'Haddam-Killingworth',
+      publication_name == 'Indy Politics'       ~ 'Indianapolis',
+      publication_name == 'Midwest Energy News' ~ 'St. Paul',
+      publication_name == 'Payday Report'       ~ 'Pittsburgh',
+      publication_name == 'Political Wire'      ~ 'New York',
+      publication_name == 'RANGE Media'         ~ 'Seattle',
+      publication_name == 'Silicon Hills News'  ~ 'Austin',
+      publication_name == 'Southerly'           ~ 'Louisville',
+      publication_name == 'Truthout'            ~ 'Sacramento',
+      publication_name == 'Vngle'               ~ 'Atlanta',
+      TRUE                                      ~ city
+      ),
+    state = case_when(
+      publication_name == 'Haddam Now'          ~ 'CT',
+      publication_name == 'Indy Politics'       ~ 'IN',
+      publication_name == 'Midwest Energy News' ~ 'MN',
+      publication_name == 'Payday Report'       ~ 'PA',
+      publication_name == 'Political Wire'      ~ 'NY',
+      publication_name == 'RANGE Media'         ~ 'WA',
+      publication_name == 'Silicon Hills News'  ~ 'TX',
+      publication_name == 'Southerly'           ~ 'KY',
+      publication_name == 'Truthout'            ~ 'CA',
+      publication_name == 'Vngle'               ~ 'GA',
+      TRUE                                      ~ state
+    )) %>% 
+  filter(!is.na(city))                                # Latina Lista's city not found
+
+
+```
+
+### Publication by state
+
+```{r}
+pub_data <- d %>% 
+  count(state) %>% 
+  rbind(tibble(
+    state = c('AK', 'ND', 'WV'), 
+    n = c(0, 0, 0))) %>%                                      # adding ND-AK-WV
+  left_join(tibble(
+    name = state.name, 
+    state = state.abb)) %>%                                   # add all state name
+  replace_na(list(name = 'District of Columbia'))
+```
+
+
+```{r, fig.width=10, fig.height=15}
+ggplot() +
+  geom_col(
+    data = pub_data,
+    aes(n, fct_reorder(state, n)),
+    fill = '#421C52')+
+  labs(y='', x='', title = 'Publications by state')+
+  theme_light()
+
+
+```
+
+
+### Hex map data
+Most of this code comes from the *R Gallery*. For more information, check this [link](https://bookdown.org/content/b298e479-b1ab-49fa-b83d-a57c2b034d49/)
+
+```{r}
+# Download the Hexagones boundaries for US at geojson format here: https://team.carto.com/u/andrew/tables/andrew.us_states_hexgrid/public/map.
+
+hex_df_raw <- geojson_read('us_states_hexgrid.geojson',  what = 'sp') 
+
+hex_df_raw@data <-  hex_df_raw@data %>%                               
+  mutate(google_name = gsub(' \\(United States\\)', '', google_name)) # tidy w/ broom
+
+data <- tidy(hex_df_raw, region = 'google_name') %>%
+  left_join(pub_data, by=c('id'='name'))                              # merge datasets
+
+
+data$bin <- cut(
+  data$n , 
+  breaks=c(0, 5, 10, 15, 20, 25, 30, 35, 
+           40, 45, 50, 55, 60, 65, Inf), 
+  labels=c('0-5', '5-10', '11-15', '16-20', '21-25', 
+           '26-30', '31-35','36-40', '41-45', '46-50', 
+           '51-55', '56-60', '61-65', '66-70'), 
+  include.lowest = TRUE )                                              # legend
+
+
+ctrs <- cbind.data.frame(
+  data.frame(
+    gCentroid(
+      hex_df_raw, 
+      byid=TRUE), 
+    id=hex_df_raw@data$iso3166_2)) %>% 
+  left_join(pub_data, by=c('id'='state'))                                    # labels
+
+
+```
+
+
+
+### Final output
+```{r}
+paged_table(data)
+```
+
+
+## Plotting
+
+```{r, fig.width=15, fig.height=10}
+
+plot <- ggplot() +
+  geom_polygon(
+    data = data,
+    aes(x = long, y = lat, 
+        group = group, fill = bin) , 
+    size =0, alpha=0.9) +
+  geom_text(
+    data=ctrs, 
+    aes(x=x, y=y, label=id), 
+    color='white', size=4, fontface = 'bold') +
+  annotate(
+    'text', x=-70, y=28, color = '#f5f5f2',
+    label = 'Project OASIS\nTidytuesday week 14',
+    hjust = 1, family = 'Roboto', fontface = 'italic')+
+  theme_void() +
+  scale_fill_manual( 
+    values=mpal, 
+    name  ='Number of organizations: state by state', 
+    guide = guide_legend(
+      keyheight      = unit(3, units = 'mm'), 
+      keywidth       = unit(12, units = 'mm'), 
+      label.position = 'bottom', 
+      title.position = 'top',
+      nrow           =1) 
+  ) +
+  ggtitle('DIGITAL PUBLICATIONS') +
+  theme(
+    legend.position   = c(0.5, 0.85),
+    text              = element_text(color = '#f5f5f2', face = 'bold'),
+    plot.background   = element_rect(fill = '#43464B', color = NA), 
+    panel.background  = element_rect(fill = '#43464B', color = NA), 
+    legend.background = element_rect(fill = '#43464B', color = NA),
+    legend.title      = element_text(hjust = .5),
+    plot.title        = element_text(
+      size   = 22, 
+      hjust  = 0.5, 
+      family = 'Roboto',
+      color  = '#f5f5f2', 
+      margin = margin(
+        b    = -0.1, 
+        t    = 1, 
+        l    = 2, 
+        unit = 'cm')
+      )
+  )
+
+plot
+
+```
+
