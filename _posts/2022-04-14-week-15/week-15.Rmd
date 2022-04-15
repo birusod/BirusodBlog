@@ -1,0 +1,239 @@
+---
+title: "week-15: Indoor Air Pollution"
+description: |
+  Exploring share of deaths from indoor air pollution in Africa.
+author:
+  - name: Oumarou Diallo
+date: 2022-04-14
+preview: w15_indoor_air_pol.png
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+---
+
+## Setup & Libraries
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+
+#if (!require("pacman")) install.packages("pacman")
+pacman::p_load(
+  tidytuesdayR, tidyverse, janitor, scales, rmarkdown, ggrepel,
+  ggthemes, MetBrewer, showtext, ggtext, patchwork, usefunc,
+  sf, afrilearndata, sysfonts
+  )
+
+font_add_google("Noto Serif") 
+font_add_google("Quicksand")
+font_add_google("Fira Sans Condensed")
+font_add_google('Roboto', 'Roboto')
+
+showtext_auto()
+
+```
+
+
+## Datasets
+
+This week, we have 6 datasets to play with. I explored them all but ended up focusing on 2: the fuel_gdp and indoor_pollution. 
+
+
+Small issues with both datasets:
+  - Some have very long names to work with (needed renaming)
+  - For the fuel_gdp df, continent column has many missing (luckily easily fixable)
+
+### Loading
+
+```{r}
+tt <- tt_load('2022-04-12')
+
+```
+
+
+### Exploring and wrangling 
+
+```{r}
+# Fuel_gdp 
+
+fg <- tt$fuel_gdp %>% 
+  clean_names() %>% 
+  select(
+    year,
+    country = entity,
+    pct     = access_to_clean_fuels_and_technologies_for_cooking_percent_of_population,
+    gdp     = gdp_per_capita_ppp_constant_2017_international,
+    pop     = population_historical_estimates,
+    continent
+    ) 
+fuel_gdp <- fg %>% 
+  mutate(continent2 = case_when(
+    country %in% {fg %>% filter(continent == 'Asia') %>% 
+        select(country) %>% pull()} ~ 'Asia',
+    country %in% {fg %>% filter(continent == 'Europe') %>% 
+        select(country) %>% pull()} ~ 'Europe',
+    country %in% {fg %>% filter(continent == 'Africa') %>% 
+        select(country) %>% pull()} ~ 'Africa',
+    country %in% {fg %>% filter(continent == 'Antarctica') %>% 
+        select(country) %>% pull()} ~ 'Antarctica',
+    country %in% {fg %>% filter(continent == 'North America') %>% 
+        select(country) %>% pull()} ~ 'North America',
+    country %in% {fg %>% filter(continent == 'Oceania') %>% 
+        select(country) %>% pull()} ~ 'Oceania',
+    country %in% {fg %>% filter(continent == 'South America') %>% 
+        select(country) %>% pull()} ~ 'South America')
+    ) %>% 
+  filter(
+    !is.na(continent2),
+    !is.na(pct)
+    ) %>% 
+  select(-continent) %>% 
+  rename(continent = continent2)   # I hope to find a better/faster way to do this
+
+
+# Indoor_pollution
+
+ind_pollution <- tt$indoor_pollution %>% 
+  clean_names() %>%
+  rename(
+    country = entity,
+    deaths  = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent)
+
+
+```
+
+
+
+### Final output
+
+
+```{r}
+paged_table(fuel_gdp)
+```
+
+
+
+```{r}
+paged_table(ind_pollution)
+```
+
+
+## Plotting
+
+### Correlation GDP - Access to Fuels + Tech
+
+
+```{r}
+p1 <- fuel_gdp %>% 
+  filter(
+    year      == 2015,
+    continent == 'Africa', 
+    !is.na(gdp)
+    ) %>% 
+  ggplot(aes(gdp, pct/100))+
+  geom_point() + 
+  geom_smooth(method = 'lm', fill = 'brown', alpha = .2)+
+  geom_text_repel(
+    aes(label = country), 
+    segment.colour = NA)+
+  scale_size_binned(range = c(1, 10))+
+  scale_x_log10(labels = dollar)+
+  scale_y_continuous(labels = percent) +
+  theme_light()+
+  labs( x        = 'GDP per capita',
+        y        = 'Percentage',
+        title    = 'Access to clean fuels & technologies for cooking in Africa',
+        subtitle = 'GDP per capita vs. Population population with access in 2015')+
+  theme(plot.title    = element_text(size = 20, face = 'bold', family = 'Noto Serif'),
+        plot.subtitle = element_text(size = 12, face = 'bold', family = 'Quicksand'),
+        axis.title    = element_text(size = 12, face = 'bold'),
+        axis.text     = element_text(size = 10, face = 'bold'),
+        panel.grid    = element_blank())
+
+
+```
+
+
+
+### Indoor air pollution
+
+For this plot, I used the afrimapr data to plot the African continent with most up-to-date borders :)  To learn more =>  [afrimapr](https://afrimapr.github.io/afrimapr.website/blog/2020/healthsites-app/)
+
+
+
+```{r}
+data(africountries)
+africa_data <- africountries %>% 
+  dplyr::select(1, 6, 7, 8) %>% 
+  rename(code = iso_a3) %>% 
+  left_join(ind_pollution) %>% 
+  dplyr::select(1,2,3,5,6,7,4) %>% 
+  mutate(deaths = round(deaths, digits = 0))
+
+# additional data prep for the legend
+africa_data$deaths_cat <- cut(
+  africa_data$deaths , 
+  breaks         =c(0, 3, 6, 9, 12, 15, Inf), 
+  labels         =c('0  -  3', '4  -  6', '7  -  9', '10-12', '13-15', '16-18'), 
+  include.lowest = TRUE )
+
+# countries with higher percentage in 2019
+countries_list <- c('NER', 'BFA', 'TCD', 'ETH', 'MDG', 'COD', 'SOM', 'GIN')
+
+
+# Plot title + subtitle 
+# usefunc by [Nicola Rennie](https://twitter.com/nrennie35) is very handy for long text
+
+mysubtitle <- str_wrap_break("Niger, Somalia, Chad, Congo D., Burkina Faso, Ethiopia & Guinea still have high share of deaths from indoor air pollution (>= 13%) in 2019\n\n", 70)
+mycaption <- "W15 | Data: Our World in Data | #TidyTuesdayR"
+
+
+# Another favorite package for theme+colors [metBrewer](https://github.com/BlakeRMills/MetBrewer)
+
+p2 <- africa_data %>% 
+  mutate(lab = case_when(code %in% countries_list ~ name,
+                         TRUE ~ '')) %>% 
+  filter(year %in% c(1990, 2000, 2010, 2019)) %>% 
+  ggplot(aes(fill = deaths_cat)) +
+  geom_sf(color = 'black', size = 0.05) +
+  geom_sf_text(aes(label = lab), 
+               color = 'white',
+               size  = 3) +  
+  facet_wrap(~year) +
+  theme_map() +
+  scale_fill_manual( 
+    values=met.brewer("Tam", 8)[c(1, 2, 4, 5, 6, 7)], 
+    name='', 
+    guide = guide_legend(
+      keywidth       =unit(6, units = 'mm'),
+      keyheight      =unit(2, units = 'mm'),
+      label.position = 'left', 
+      title.position = 'top', 
+      label.hjust    = -.01,
+      ncol           =1)
+  ) +
+  plot_annotation(
+    title    = 'INDOOR AIR POLLUTION',
+    subtitle = mysubtitle,
+    caption  = mycaption) &
+  theme(
+    text              = element_text(color = 'white'),
+    legend.position   = c(0, 0),
+    legend.background = element_rect(fill = NA, color = NA),
+    legend.text       = element_text(face = 'bold', size = 12), 
+    plot.margin       = margin(rep(4, 4)),
+    strip.text        = element_text(face = 'bold', size = 20, color = 'white'),
+    strip.background  = element_rect(fill = NA, color = NA),
+    plot.background   = element_rect(fill  = met.brewer("Isfahan2")[5], color = NA), 
+    panel.background  = element_rect(fill = met.brewer("Isfahan2")[5], color = NA),
+    plot.title = element_text(family = "Fira Sans Condensed", face = "bold", hjust = 0.5, 
+                              size = 24, color = "wheat", margin = margin(b = 10)),
+    plot.subtitle = element_text(family = "Roboto", hjust = 0.5, 
+                                 size = 12, color = "wheat"),
+    plot.caption = element_text(hjust = .5, face = 'italic')
+    )
+  
+
+
+```
+
