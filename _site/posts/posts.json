@@ -2,7 +2,7 @@
   {
     "path": "posts/2022-05-09-week-19/",
     "title": "week-19",
-    "description": "A short description of the post.",
+    "description": "Exploring friendly packages to create tables (including interactive) in R",
     "author": [
       {
         "name": "Oumarou Diallo",
@@ -13,7 +13,7 @@
     "categories": [],
     "contents": "\nDistill is a publication format for scientific and technical writing,\nnative to the web.\nLearn more about using Distill at https://rstudio.github.io/distill.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-05-09T21:54:53-07:00",
+    "last_modified": "2022-05-09T22:02:26-07:00",
     "input_file": "week-19.knit.md"
   },
   {
