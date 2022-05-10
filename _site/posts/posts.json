@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/2022-05-09-week-19/",
+    "title": "week-19",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Oumarou Diallo",
+        "url": {}
+      }
+    ],
+    "date": "2022-05-09",
+    "categories": [],
+    "contents": "\nDistill is a publication format for scientific and technical writing,\nnative to the web.\nLearn more about using Distill at https://rstudio.github.io/distill.\n\n\n\n",
+    "preview": {},
+    "last_modified": "2022-05-09T21:54:53-07:00",
+    "input_file": "week-19.knit.md"
+  },
+  {
     "path": "posts/2022-04-14-week-15/",
     "title": "week-15: Indoor Air Pollution",
     "description": "Exploring share of deaths from indoor air pollution in Africa.",
