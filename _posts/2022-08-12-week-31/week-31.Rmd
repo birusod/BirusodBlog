@@ -24,6 +24,9 @@ p_load(tidytuesdayR,tidyverse, scales, rmarkdown, hrbrthemes)
 
 ## Dataset
 
+[Week-31 tidytuesday data](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-08-02)
+[Frog Photo credit](https://californiaherps.com/frogs/images/rpretiosagl053.jpg)
+
 ### Loading
 ```{r}
 tt <- tt_load("2022-08-02")
