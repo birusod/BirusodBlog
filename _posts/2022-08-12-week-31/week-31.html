@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { color: #00769e; background-color: #f1f3f5; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span { color: #00769e; } /* Normal */
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #657422; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #00769e; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #00769e; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #00769e; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Week-31: Frogs</title>
+
+  <meta property="description" itemprop="description" content="Exploring Oregon Spotted Frog Habitat."/>
+
+
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2022-08-12"/>
+  <meta property="article:created" itemprop="dateCreated" content="2022-08-12"/>
+  <meta name="article:author" content="Oumarou Diallo"/>
+
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Week-31: Frogs"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Exploring Oregon Spotted Frog Habitat."/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Week-31: Frogs"/>
+  <meta property="twitter:description" content="Exploring Oregon Spotted Frog Habitat."/>
+
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","preview","output"]}},"value":[{"type":"character","attributes":{},"value":["Week-31: Frogs"]},{"type":"character","attributes":{},"value":["Exploring Oregon Spotted Frog Habitat.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Oumarou Diallo"]}]}]},{"type":"character","attributes":{},"value":["2022-08-12"]},{"type":"character","attributes":{},"value":["osf.jpeg"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["osf.jpeg","week-31_files/anchor-4.2.2/anchor.min.js","week-31_files/bowser-1.9.3/bowser.min.js","week-31_files/distill-2.2.21/template.v2.js","week-31_files/figure-html5/unnamed-chunk-7-1.png","week-31_files/figure-html5/unnamed-chunk-8-1.png","week-31_files/header-attrs-2.14/header-attrs.js","week-31_files/jquery-3.6.0/jquery-3.6.0.js","week-31_files/jquery-3.6.0/jquery-3.6.0.min.js","week-31_files/jquery-3.6.0/jquery-3.6.0.min.map","week-31_files/pagedtable-1.1/css/pagedtable.css","week-31_files/pagedtable-1.1/js/pagedtable.js","week-31_files/popper-2.6.0/popper.min.js","week-31_files/tippy-6.2.7/tippy-bundle.umd.min.js","week-31_files/tippy-6.2.7/tippy-light-border.css","week-31_files/tippy-6.2.7/tippy.css","week-31_files/tippy-6.2.7/tippy.umd.min.js","week-31_files/webcomponents-2.0.0/webcomponents.js"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+  <style type="text/css">
+
+  body {
+    background-color: white;
+  }
+
+  .pandoc-table {
+    width: 100%;
+  }
+
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .shaded-content {
+    background: white;
+  }
+
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+
+  d-appendix {
+    padding-top: 30px;
+  }
+
+  d-article>p>img {
+    width: 100%;
+  }
+
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+
+  /* Tweak code blocks */
+
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+
+  d-article div.sourceCode {
+    background-color: white;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  d-article pre a {
+    border-bottom: none;
+  }
+
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
+  @media(min-width: 768px) {
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+
+  d-article pre {
+    font-size: 14px;
+  }
+
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for d-contents */
+
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .d-contents li {
+    list-style-type: none
+  }
+
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+
+  .d-contents ul {
+    padding-left: 1em
+  }
+
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+
+
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+
+
+  /* Figure */
+
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+  /* Citations */
+
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+
+
+  /* Tweak 1000px media break to show more text */
+
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+
+    .grid {
+      grid-column-gap: 16px;
+    }
+
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+
+
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Include appendix styles here so they can be overridden */
+
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  d-appendix > * {
+    grid-column: text;
+  }
+
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+
+  /* Include footnote styles here so they can be overridden */
+
+  d-footnote-list {
+    contain: layout style;
+  }
+
+  d-footnote-list > * {
+    grid-column: text;
+  }
+
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+
+
+
+  /* Anchor.js */
+
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  /* Social footer */
+
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+
+  .disqus-comments {
+    margin-right: 30px;
+  }
+
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  #disqus_thread {
+    margin-top: 30px;
+  }
+
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+
+
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+
+
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
+  </style>
+
+  <script type="application/javascript">
+
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+
+  // show body when load is complete
+  function on_load_complete() {
+
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+
+
+    // set body to visible
+    document.body.style.visibility = 'visible';
+
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+
+  function init_distill() {
+
+    init_common();
+
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+
+      // capture layout
+      var layout = $(this).attr('data-layout');
+
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+
+
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+
+    // load distill framework
+    load_distill_framework();
+
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
+          var fn = $(this).children()[0]
+          $(this).html(fn.shadowRoot.querySelector("sup"))
+          $(this).id = fn.id
+          fn.remove()
+        }
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+
+      // fix footnotes in tables (#411)
+      // replacing broken distill.pub feature
+      $('table d-footnote').each(function() {
+        // we replace internal showAtNode methode which is triggered when hovering a footnote
+        this.hoverBox.showAtNode = function(node) {
+          // ported from https://github.com/distillpub/template/pull/105/files
+          calcOffset = function(elem) {
+              let x = elem.offsetLeft;
+              let y = elem.offsetTop;
+              // Traverse upwards until an `absolute` element is found or `elem`
+              // becomes null.
+              while (elem = elem.offsetParent && elem.style.position != 'absolute') {
+                  x += elem.offsetLeft;
+                  y += elem.offsetTop;
+              }
+
+              return { left: x, top: y };
+          }
+          // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
+          const bbox = node.getBoundingClientRect();
+          const offset = calcOffset(node);
+          this.show([offset.left + bbox.width, offset.top + bbox.height]);
+        }
+      })
+
+      // clear polling timer
+      clearInterval(tid);
+
+      // show body now that everything is ready
+      on_load_complete();
+    }
+
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+
+  }
+
+  function init_downlevel() {
+
+    init_common();
+
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+
+    // remove toc
+    $('.d-contents').remove();
+
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+
+
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+
+    $('body').addClass('downlevel');
+
+    on_load_complete();
+  }
+
+
+  function init_common() {
+
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      // ignore leaflet img layers (#106)
+      figures = figures.filter(':not(img[class*="leaflet"])')
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+
+      }
+    });
+
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace(/^index[.]html/, "./"));
+      });
+    }
+
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+
+  </script>
+
+  <!--/radix_placeholder_distill-->
+  <script src="week-31_files/header-attrs-2.14/header-attrs.js"></script>
+  <link href="week-31_files/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+  <script src="week-31_files/pagedtable-1.1/js/pagedtable.js"></script>
+  <script src="week-31_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="week-31_files/popper-2.6.0/popper.min.js"></script>
+  <link href="week-31_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="week-31_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="week-31_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="week-31_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="week-31_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="week-31_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="week-31_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Week-31: Frogs","description":"Exploring Oregon Spotted Frog Habitat.","authors":[{"author":"Oumarou Diallo","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-08-12T00:00:00.000-07:00","citationText":"Diallo, 2022"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Week-31: Frogs</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p><p>Exploring Oregon Spotted Frog Habitat.</p></p>
+</div>
+
+<div class="d-byline">
+  Oumarou Diallo  
+  
+<br/>2022-08-12
+</div>
+
+<div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#setup-libraries" id="toc-setup-libraries">Setup &amp;
+Libraries</a></li>
+<li><a href="#dataset" id="toc-dataset">Dataset</a>
+<ul>
+<li><a href="#loading" id="toc-loading">Loading</a></li>
+<li><a href="#exploring-and-wrangling"
+id="toc-exploring-and-wrangling">Exploring and wrangling</a></li>
+</ul></li>
+<li><a href="#plotting" id="toc-plotting">Plotting</a></li>
+</ul>
+</nav>
+</div>
+<h2 id="setup-libraries">Setup &amp; Libraries</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/knitr/man/opts_chunk.html'>opts_chunk</a></span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>echo <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/trinker/pacman'>pacman</a></span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/pkg/pacman/man/p_load.html'>p_load</a></span><span class='op'>(</span><span class='va'>tidytuesdayR</span>,<span class='va'>tidyverse</span>, <span class='va'>scales</span>, <span class='va'>rmarkdown</span>, <span class='va'>hrbrthemes</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<h2 id="dataset">Dataset</h2>
+<h3 id="loading">Loading</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>tt</span> <span class='op'>&lt;-</span> <span class='fu'>tt_load</span><span class='op'>(</span><span class='st'>"2022-08-02"</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>
+    Downloading file 1 of 1: `frogs.csv`</code></pre>
+</div>
+<h3 id="exploring-and-wrangling">Exploring and wrangling</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Sports categories</span></span>
+<span><span class='va'>tt</span> <span class='op'>%&gt;%</span> <span class='fu'>map</span><span class='op'>(</span><span class='va'>glimpse</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>Rows: 311
+Columns: 16
+$ Site       &lt;chr&gt; &quot;Crane Prairie&quot;, &quot;Crane Prairie&quot;, &quot;Crane Prairie&quot;…
+$ Subsite    &lt;chr&gt; &quot;SE Pond&quot;, &quot;SE Pond&quot;, &quot;SE Pond&quot;, &quot;SE Pond&quot;, &quot;SE P…
+$ HabType    &lt;chr&gt; &quot;Pond&quot;, &quot;Pond&quot;, &quot;Pond&quot;, &quot;Pond&quot;, &quot;Pond&quot;, &quot;Pond&quot;, &quot;…
+$ SurveyDate &lt;chr&gt; &quot;9/25/2018&quot;, &quot;10/2/2018&quot;, &quot;10/9/2018&quot;, &quot;10/15/201…
+$ Ordinal    &lt;dbl&gt; 268, 275, 282, 288, 295, 305, 309, 317, 322, 330,…
+$ Frequency  &lt;dbl&gt; 164.169, 164.169, 164.169, 164.169, 164.169, 164.…
+$ UTME_83    &lt;dbl&gt; 597369, 597352, 597345, 597340, 597344, 597410, 5…
+$ UTMN_83    &lt;dbl&gt; 4846486, 4846487, 4846458, 4846464, 4846460, 4846…
+$ Interval   &lt;dbl&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6…
+$ Female     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ Water      &lt;chr&gt; &quot;Deep water&quot;, &quot;Deep water&quot;, &quot;Shallow water&quot;, &quot;Dee…
+$ Type       &lt;chr&gt; &quot;Marsh/Pond&quot;, &quot;Marsh/Pond&quot;, &quot;Marsh/Pond&quot;, &quot;Marsh/…
+$ Structure  &lt;chr&gt; &quot;Herbaceous veg&quot;, &quot;Open&quot;, &quot;Herbaceous veg&quot;, &quot;Wood…
+$ Substrate  &lt;chr&gt; &quot;Unknown substrate&quot;, &quot;Unknown substrate&quot;, &quot;Unknow…
+$ Beaver     &lt;chr&gt; &quot;No beaver&quot;, &quot;No beaver&quot;, &quot;No beaver&quot;, &quot;No beaver…
+$ Detection  &lt;chr&gt; &quot;Captured&quot;, &quot;No visual&quot;, &quot;No visual&quot;, &quot;No visual&quot;…</code></pre>
+<pre><code>$frogs
+# A tibble: 311 × 16
+   Site        Subsite HabType Surve…¹ Ordinal Frequ…² UTME_83 UTMN_83
+   &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Crane Prai… SE Pond Pond    9/25/2…     268    164.  597369 4846486
+ 2 Crane Prai… SE Pond Pond    10/2/2…     275    164.  597352 4846487
+ 3 Crane Prai… SE Pond Pond    10/9/2…     282    164.  597345 4846458
+ 4 Crane Prai… SE Pond Pond    10/15/…     288    164.  597340 4846464
+ 5 Crane Prai… SE Pond Pond    10/22/…     295    164.  597344 4846460
+ 6 Crane Prai… SE Pond Pond    11/1/2…     305    164.  597410 4846451
+ 7 Crane Prai… SE Pond Pond    11/5/2…     309    164.  597369 4846456
+ 8 Crane Prai… SE Pond Pond    11/13/…     317    164.  597341 4846461
+ 9 Crane Prai… SE Pond Pond    11/18/…     322    164.  597348 4846458
+10 Crane Prai… SE Pond Pond    11/26/…     330    164.  597350 4846463
+# … with 301 more rows, 8 more variables: Interval &lt;dbl&gt;,
+#   Female &lt;dbl&gt;, Water &lt;chr&gt;, Type &lt;chr&gt;, Structure &lt;chr&gt;,
+#   Substrate &lt;chr&gt;, Beaver &lt;chr&gt;, Detection &lt;chr&gt;, and abbreviated
+#   variable names ¹​SurveyDate, ²​Frequency
+# ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>f</span> <span class='op'>&lt;-</span> <span class='va'>tt</span><span class='op'>$</span><span class='va'>frogs</span>;</span>
+<span><span class='va'>f</span> <span class='op'>|&gt;</span> <span class='fu'>paged_table</span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Site"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Subsite"],"name":[2],"type":["chr"],"align":["left"]},{"label":["HabType"],"name":[3],"type":["chr"],"align":["left"]},{"label":["SurveyDate"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Ordinal"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Frequency"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["UTME_83"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["UTMN_83"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["Interval"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["Female"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["Water"],"name":[11],"type":["chr"],"align":["left"]},{"label":["Type"],"name":[12],"type":["chr"],"align":["left"]},{"label":["Structure"],"name":[13],"type":["chr"],"align":["left"]},{"label":["Substrate"],"name":[14],"type":["chr"],"align":["left"]},{"label":["Beaver"],"name":[15],"type":["chr"],"align":["left"]},{"label":["Detection"],"name":[16],"type":["chr"],"align":["left"]}],"data":[{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"9/25/2018","5":"268","6":"164.169","7":"597369","8":"4846486","9":"0","10":"0","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/2/2018","5":"275","6":"164.169","7":"597352","8":"4846487","9":"1","10":"0","11":"Deep water","12":"Marsh/Pond","13":"Open","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/9/2018","5":"282","6":"164.169","7":"597345","8":"4846458","9":"2","10":"0","11":"Shallow water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/15/2018","5":"288","6":"164.169","7":"597340","8":"4846464","9":"3","10":"0","11":"Deep water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/22/2018","5":"295","6":"164.169","7":"597344","8":"4846460","9":"4","10":"0","11":"Deep water","12":"Marsh/Pond","13":"Woody veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/1/2018","5":"305","6":"164.169","7":"597410","8":"4846451","9":"5","10":"0","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/5/2018","5":"309","6":"164.169","7":"597369","8":"4846456","9":"6","10":"0","11":"Deep water","12":"Marsh/Pond","13":"Open","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/13/2018","5":"317","6":"164.169","7":"597341","8":"4846461","9":"7","10":"0","11":"Shallow water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/18/2018","5":"322","6":"164.169","7":"597348","8":"4846458","9":"8","10":"0","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/26/2018","5":"330","6":"164.169","7":"597350","8":"4846463","9":"9","10":"0","11":"Deep water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"9/27/2018","5":"270","6":"164.195","7":"597580","8":"4851035","9":"0","10":"0","11":"No water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/4/2018","5":"277","6":"164.195","7":"597581","8":"4851041","9":"1","10":"0","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/11/2018","5":"284","6":"164.195","7":"597579","8":"4851045","9":"2","10":"0","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/17/2018","5":"290","6":"164.195","7":"597580","8":"4851035","9":"3","10":"0","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/24/2018","5":"297","6":"164.195","7":"597582","8":"4851035","9":"4","10":"0","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/31/2018","5":"304","6":"164.195","7":"597579","8":"4851037","9":"5","10":"0","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/7/2018","5":"311","6":"164.195","7":"597580","8":"4851036","9":"6","10":"0","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/15/2018","5":"319","6":"164.195","7":"597426","8":"4850781","9":"7","10":"0","11":"Deep water","12":"Reservoir","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/19/2018","5":"323","6":"164.195","7":"597426","8":"4850782","9":"8","10":"0","11":"Unknown water","12":"Reservoir","13":"Woody debris","14":"Unknown substrate","15":"Lodge","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/28/2018","5":"332","6":"164.195","7":"597424","8":"4850779","9":"9","10":"0","11":"Unknown water","12":"Reservoir","13":"Woody debris","14":"Unknown substrate","15":"Lodge","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"9/13/2018","5":"256","6":"164.357","7":"596027","8":"4850389","9":"0","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"9/19/2018","5":"262","6":"164.357","7":"596102","8":"4850422","9":"1","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"9/26/2018","5":"269","6":"164.357","7":"596088","8":"4850443","9":"2","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/3/2018","5":"276","6":"164.357","7":"596098","8":"4850444","9":"3","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/10/2018","5":"283","6":"164.357","7":"596097","8":"4850448","9":"4","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/16/2018","5":"289","6":"164.357","7":"596098","8":"4850442","9":"5","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/23/2018","5":"296","6":"164.357","7":"596106","8":"4850436","9":"6","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/30/2018","5":"303","6":"164.357","7":"596100","8":"4850442","9":"7","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/6/2018","5":"310","6":"164.357","7":"596093","8":"4850442","9":"8","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/14/2018","5":"318","6":"164.357","7":"596106","8":"4850395","9":"9","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/20/2018","5":"324","6":"164.357","7":"596109","8":"4850398","9":"10","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/29/2018","5":"333","6":"164.357","7":"596109","8":"4850392","9":"11","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"9/18/2018","5":"261","6":"164.371","7":"597320","8":"4851113","9":"0","10":"1","11":"No water","12":"Reservoir","13":"Herbaceous veg","14":"Organic soil","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"9/27/2018","5":"270","6":"164.371","7":"597349","8":"4851022","9":"1","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/4/2018","5":"277","6":"164.371","7":"597289","8":"4851029","9":"2","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/11/2018","5":"284","6":"164.371","7":"597287","8":"4851028","9":"3","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/17/2018","5":"290","6":"164.371","7":"597287","8":"4851025","9":"4","10":"1","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/24/2018","5":"297","6":"164.371","7":"597287","8":"4851027","9":"5","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/31/2018","5":"304","6":"164.371","7":"597287","8":"4851028","9":"6","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/7/2018","5":"311","6":"164.371","7":"597287","8":"4851026","9":"7","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/15/2018","5":"319","6":"164.371","7":"597223","8":"4850767","9":"8","10":"1","11":"Deep water","12":"Reservoir","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/19/2018","5":"323","6":"164.371","7":"597223","8":"4850743","9":"9","10":"1","11":"Deep water","12":"Reservoir","13":"Open","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/27/2018","5":"331","6":"164.371","7":"597329","8":"4850755","9":"10","10":"1","11":"Deep water","12":"Reservoir","13":"Open","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"9/25/2018","5":"268","6":"164.381","7":"597377","8":"4846479","9":"0","10":"1","11":"Shallow water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/2/2018","5":"275","6":"164.381","7":"597424","8":"4846454","9":"1","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/9/2018","5":"282","6":"164.381","7":"597330","8":"4846459","9":"2","10":"1","11":"Shallow water","12":"Marsh/Pond","13":"Open","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/15/2018","5":"288","6":"164.381","7":"597344","8":"4846476","9":"3","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/22/2018","5":"295","6":"164.381","7":"597340","8":"4846481","9":"4","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Open","14":"Unknown substrate","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/1/2018","5":"305","6":"164.381","7":"597374","8":"4846479","9":"5","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/5/2018","5":"309","6":"164.381","7":"597365","8":"4846482","9":"6","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Open","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/13/2018","5":"317","6":"164.381","7":"597350","8":"4846484","9":"7","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/18/2018","5":"322","6":"164.381","7":"597350","8":"4846488","9":"8","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/26/2018","5":"330","6":"164.381","7":"597349","8":"4846486","9":"9","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"9/26/2018","5":"269","6":"164.395","7":"596100","8":"4850439","9":"0","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/3/2018","5":"276","6":"164.395","7":"596101","8":"4850441","9":"1","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/10/2018","5":"283","6":"164.395","7":"596103","8":"4850442","9":"2","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/16/2018","5":"289","6":"164.395","7":"596078","8":"4850423","9":"3","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/23/2018","5":"296","6":"164.395","7":"596121","8":"4850427","9":"4","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"River","4":"10/30/2018","5":"303","6":"164.395","7":"595985","8":"4850664","9":"5","10":"1","11":"Unknown water","12":"Stream/Canal","13":"Herbaceous veg","14":"Organic soil","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"River","4":"11/6/2018","5":"310","6":"164.395","7":"595987","8":"4850667","9":"6","10":"1","11":"Unknown water","12":"Stream/Canal","13":"Leaf litter","14":"Organic soil","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"River","4":"11/14/2018","5":"318","6":"164.395","7":"595979","8":"4850656","9":"7","10":"1","11":"Unknown water","12":"Stream/Canal","13":"Herbaceous veg","14":"Organic soil","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"River","4":"11/20/2018","5":"324","6":"164.395","7":"595986","8":"4850660","9":"8","10":"1","11":"Unknown water","12":"Stream/Canal","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"River","4":"11/29/2018","5":"333","6":"164.395","7":"596026","8":"4850562","9":"9","10":"1","11":"Unknown water","12":"Stream/Canal","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"9/26/2018","5":"269","6":"164.407","7":"595441","8":"4850001","9":"0","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/3/2018","5":"276","6":"164.407","7":"595447","8":"4850000","9":"1","10":"1","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/10/2018","5":"283","6":"164.407","7":"595449","8":"4849969","9":"2","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/16/2018","5":"289","6":"164.407","7":"595444","8":"4849963","9":"3","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/23/2018","5":"296","6":"164.407","7":"595459","8":"4849971","9":"4","10":"1","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/30/2018","5":"303","6":"164.407","7":"595442","8":"4849981","9":"5","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/6/2018","5":"310","6":"164.407","7":"595447","8":"4849981","9":"6","10":"1","11":"Shallow water","12":"Reservoir","13":"Open","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/14/2018","5":"318","6":"164.407","7":"595640","8":"4849907","9":"7","10":"1","11":"Deep water","12":"Reservoir","13":"Open","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/20/2018","5":"324","6":"164.407","7":"595590","8":"4849991","9":"8","10":"1","11":"Deep water","12":"Reservoir","13":"Open","14":"Flocc","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"9/18/2018","5":"261","6":"164.417","7":"597670","8":"4850964","9":"0","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"9/27/2018","5":"270","6":"164.417","7":"597597","8":"4850969","9":"1","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/4/2018","5":"277","6":"164.417","7":"597604","8":"4850985","9":"2","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/11/2018","5":"284","6":"164.417","7":"597604","8":"4850985","9":"3","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/17/2018","5":"290","6":"164.417","7":"597520","8":"4850985","9":"4","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/24/2018","5":"297","6":"164.417","7":"597330","8":"4850995","9":"5","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/31/2018","5":"304","6":"164.417","7":"597356","8":"4850986","9":"6","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/7/2018","5":"311","6":"164.417","7":"597346","8":"4851009","9":"7","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/15/2018","5":"319","6":"164.417","7":"597338","8":"4851002","9":"8","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/19/2018","5":"323","6":"164.417","7":"597340","8":"4850994","9":"9","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Organic soil","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/27/2018","5":"331","6":"164.417","7":"597219","8":"4850743","9":"10","10":"1","11":"Deep water","12":"Reservoir","13":"Open","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"9/26/2018","5":"269","6":"164.432","7":"595295","8":"4849831","9":"0","10":"0","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/3/2018","5":"276","6":"164.432","7":"595300","8":"4849810","9":"1","10":"0","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/10/2018","5":"283","6":"164.432","7":"595302","8":"4849800","9":"2","10":"0","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/16/2018","5":"289","6":"164.432","7":"595310","8":"4849808","9":"3","10":"0","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/23/2018","5":"296","6":"164.432","7":"595468","8":"4849957","9":"4","10":"0","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/30/2018","5":"303","6":"164.432","7":"595469","8":"4850010","9":"5","10":"0","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/6/2018","5":"310","6":"164.432","7":"595462","8":"4850004","9":"6","10":"0","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/14/2018","5":"318","6":"164.432","7":"595331","8":"4849757","9":"7","10":"0","11":"Shallow water","12":"Reservoir","13":"Open","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/20/2018","5":"324","6":"164.432","7":"594846","8":"4849389","9":"8","10":"0","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/29/2018","5":"333","6":"164.432","7":"594804","8":"4849374","9":"9","10":"0","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"9/26/2018","5":"269","6":"164.445","7":"595182","8":"4849666","9":"0","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/3/2018","5":"276","6":"164.445","7":"595112","8":"4849618","9":"1","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/10/2018","5":"283","6":"164.445","7":"595062","8":"4849612","9":"2","10":"1","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/16/2018","5":"289","6":"164.445","7":"595066","8":"4849591","9":"3","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/23/2018","5":"296","6":"164.445","7":"595085","8":"4849593","9":"4","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/30/2018","5":"303","6":"164.445","7":"595172","8":"4849647","9":"5","10":"1","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/6/2018","5":"310","6":"164.445","7":"595175","8":"4849650","9":"6","10":"1","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/14/2018","5":"318","6":"164.445","7":"595176","8":"4849639","9":"7","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/20/2018","5":"324","6":"164.445","7":"595310","8":"4849746","9":"8","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/29/2018","5":"333","6":"164.445","7":"595341","8":"4849779","9":"9","10":"1","11":"Deep water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"9/27/2018","5":"270","6":"164.457","7":"598061","8":"4850665","9":"0","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/4/2018","5":"277","6":"164.457","7":"598059","8":"4850659","9":"1","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/11/2018","5":"284","6":"164.457","7":"598061","8":"4850658","9":"2","10":"1","11":"Shallow water","12":"Reservoir","13":"Open","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/17/2018","5":"290","6":"164.457","7":"598073","8":"4850655","9":"3","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/24/2018","5":"297","6":"164.457","7":"598033","8":"4850644","9":"4","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/31/2018","5":"304","6":"164.457","7":"597876","8":"4850674","9":"5","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/7/2018","5":"311","6":"164.457","7":"597873","8":"4850678","9":"6","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/15/2018","5":"319","6":"164.457","7":"597795","8":"4850678","9":"7","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/19/2018","5":"323","6":"164.457","7":"597791","8":"4850661","9":"8","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/28/2018","5":"332","6":"164.457","7":"597783","8":"4850690","9":"9","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"9/27/2018","5":"270","6":"164.470","7":"597758","8":"4850719","9":"0","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/4/2018","5":"277","6":"164.470","7":"597752","8":"4850718","9":"1","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/11/2018","5":"284","6":"164.470","7":"597756","8":"4850722","9":"2","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/17/2018","5":"290","6":"164.470","7":"597949","8":"4850664","9":"3","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/24/2018","5":"297","6":"164.470","7":"597970","8":"4850658","9":"4","10":"1","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/31/2018","5":"304","6":"164.470","7":"597977","8":"4850646","9":"5","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/7/2018","5":"311","6":"164.470","7":"597975","8":"4850647","9":"6","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/15/2018","5":"319","6":"164.470","7":"598021","8":"4850586","9":"7","10":"1","11":"Shallow water","12":"Reservoir","13":"Open","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/19/2018","5":"323","6":"164.470","7":"597955","8":"4850633","9":"8","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/28/2018","5":"332","6":"164.470","7":"597957","8":"4850636","9":"9","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp Pond","3":"Pond","4":"9/12/2018","5":"255","6":"164.482","7":"598346","8":"4851852","9":"0","10":"0","11":"Shallow water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"9/18/2018","5":"261","6":"164.482","7":"598383","8":"4851864","9":"1","10":"0","11":"Shallow water","12":"Stream/Canal","13":"Herbaceous veg","14":"Mineral soil","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"9/20/2018","5":"263","6":"164.482","7":"598402","8":"4851836","9":"2","10":"0","11":"Shallow water","12":"Stream/Canal","13":"Herbaceous veg","14":"Mineral soil","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"9/28/2018","5":"271","6":"164.482","7":"598398","8":"4851835","9":"3","10":"0","11":"Shallow water","12":"Stream/Canal","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"10/4/2018","5":"277","6":"164.482","7":"598384","8":"4851828","9":"4","10":"0","11":"Unknown water","12":"Stream/Canal","13":"Leaf litter","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"10/11/2018","5":"284","6":"164.482","7":"598380","8":"4851791","9":"5","10":"0","11":"Unknown water","12":"Stream/Canal","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"10/17/2018","5":"290","6":"164.482","7":"598376","8":"4851780","9":"6","10":"0","11":"Shallow water","12":"Stream/Canal","13":"Woody debris","14":"Mineral soil","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"10/23/2018","5":"296","6":"164.482","7":"598381","8":"4851762","9":"7","10":"0","11":"Unknown water","12":"Stream/Canal","13":"Woody veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"10/31/2018","5":"304","6":"164.482","7":"598367","8":"4851751","9":"8","10":"0","11":"Shallow water","12":"Stream/Canal","13":"Open","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"11/6/2018","5":"310","6":"164.482","7":"598368","8":"4851756","9":"9","10":"0","11":"Shallow water","12":"Stream/Canal","13":"Woody veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"11/14/2018","5":"318","6":"164.482","7":"598369","8":"4851756","9":"10","10":"0","11":"Shallow water","12":"Stream/Canal","13":"Open","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"11/18/2018","5":"322","6":"164.482","7":"598356","8":"4851704","9":"11","10":"0","11":"Shallow water","12":"Stream/Canal","13":"Open","14":"Flocc","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"11/28/2018","5":"332","6":"164.482","7":"598354","8":"4851706","9":"12","10":"0","11":"Shallow water","12":"Stream/Canal","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp Pond","3":"Pond","4":"9/12/2018","5":"255","6":"164.495","7":"598341","8":"4851848","9":"0","10":"1","11":"Shallow water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"Cow Camp Pond","3":"Pond","4":"9/18/2018","5":"261","6":"164.495","7":"598349","8":"4851852","9":"1","10":"1","11":"Shallow water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp Pond","3":"Pond","4":"9/20/2018","5":"263","6":"164.495","7":"598348","8":"4851847","9":"2","10":"1","11":"Shallow water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"Cow Camp Pond","3":"Pond","4":"9/27/2018","5":"270","6":"164.495","7":"598352","8":"4851852","9":"3","10":"1","11":"Shallow water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp Pond","3":"Pond","4":"9/28/2018","5":"271","6":"164.495","7":"598350","8":"4851842","9":"4","10":"1","11":"No water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Organic soil","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"9/27/2018","5":"270","6":"164.506","7":"597705","8":"4850915","9":"0","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/4/2018","5":"277","6":"164.506","7":"597699","8":"4850917","9":"1","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/11/2018","5":"284","6":"164.506","7":"597705","8":"4850925","9":"2","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/17/2018","5":"290","6":"164.506","7":"597691","8":"4850917","9":"3","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/24/2018","5":"297","6":"164.506","7":"597688","8":"4850920","9":"4","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/31/2018","5":"304","6":"164.506","7":"596966","8":"4850991","9":"5","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/7/2018","5":"311","6":"164.506","7":"596825","8":"4851137","9":"6","10":"1","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/15/2018","5":"319","6":"164.506","7":"596915","8":"4851138","9":"7","10":"1","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/19/2018","5":"323","6":"164.506","7":"596809","8":"4851143","9":"8","10":"1","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/27/2018","5":"331","6":"164.506","7":"596824","8":"4851134","9":"9","10":"1","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"9/13/2018","5":"256","6":"164.520","7":"595369","8":"4849932","9":"0","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"9/19/2018","5":"262","6":"164.520","7":"595404","8":"4849953","9":"1","10":"1","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"9/26/2018","5":"269","6":"164.520","7":"595415","8":"4849958","9":"2","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/3/2018","5":"276","6":"164.520","7":"595409","8":"4849965","9":"3","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/10/2018","5":"283","6":"164.520","7":"595409","8":"4849970","9":"4","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/16/2018","5":"289","6":"164.520","7":"595407","8":"4849970","9":"5","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/23/2018","5":"296","6":"164.520","7":"595419","8":"4849967","9":"6","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/30/2018","5":"303","6":"164.520","7":"595418","8":"4849966","9":"7","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/6/2018","5":"310","6":"164.520","7":"595405","8":"4849967","9":"8","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/14/2018","5":"318","6":"164.520","7":"595425","8":"4849939","9":"9","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/20/2018","5":"324","6":"164.520","7":"595436","8":"4849939","9":"10","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/29/2018","5":"333","6":"164.520","7":"595421","8":"4849958","9":"11","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"9/27/2018","5":"270","6":"164.533","7":"597334","8":"4851058","9":"0","10":"1","11":"No water","12":"Reservoir","13":"Open","14":"Organic soil","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/4/2018","5":"277","6":"164.533","7":"597337","8":"4851038","9":"1","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/11/2018","5":"284","6":"164.533","7":"597337","8":"4851030","9":"2","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/17/2018","5":"290","6":"164.533","7":"597301","8":"4850960","9":"3","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/24/2018","5":"297","6":"164.533","7":"597324","8":"4850764","9":"4","10":"1","11":"Deep water","12":"Reservoir","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/31/2018","5":"304","6":"164.533","7":"597037","8":"4851008","9":"5","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/7/2018","5":"311","6":"164.533","7":"597028","8":"4851004","9":"6","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/15/2018","5":"319","6":"164.533","7":"596982","8":"4850984","9":"7","10":"1","11":"Shallow water","12":"Reservoir","13":"Open","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/19/2018","5":"323","6":"164.533","7":"596942","8":"4850998","9":"8","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/27/2018","5":"331","6":"164.533","7":"596788","8":"4851138","9":"9","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"9/28/2018","5":"271","6":"164.545","7":"597357","8":"4846485","9":"0","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/2/2018","5":"275","6":"164.545","7":"597340","8":"4846477","9":"1","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/9/2018","5":"282","6":"164.545","7":"597370","8":"4846478","9":"2","10":"1","11":"Shallow water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/15/2018","5":"288","6":"164.545","7":"597345","8":"4846488","9":"3","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/22/2018","5":"295","6":"164.545","7":"597344","8":"4846479","9":"4","10":"1","11":"Unknown water","12":"Non-aquatic","13":"Herbaceous veg","14":"Organic soil","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/29/2018","5":"302","6":"164.545","7":"597343","8":"4846483","9":"5","10":"1","11":"Shallow water","12":"Marsh/Pond","13":"Open","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/5/2018","5":"309","6":"164.545","7":"597341","8":"4846474","9":"6","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Open","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/13/2018","5":"317","6":"164.545","7":"597343","8":"4846477","9":"7","10":"1","11":"Shallow water","12":"Marsh/Pond","13":"Open","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/18/2018","5":"322","6":"164.545","7":"597342","8":"4846466","9":"8","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/26/2018","5":"330","6":"164.545","7":"597352","8":"4846469","9":"9","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"9/20/2018","5":"263","6":"164.557","7":"598407","8":"4851481","9":"0","10":"0","11":"Shallow water","12":"Reservoir","13":"Open","14":"Flocc","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"9/28/2018","5":"271","6":"164.557","7":"598393","8":"4851439","9":"1","10":"0","11":"No water","12":"Reservoir","13":"Herbaceous veg","14":"Organic soil","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"10/1/2018","5":"274","6":"164.557","7":"598363","8":"4851532","9":"2","10":"0","11":"No water","12":"Non-aquatic","13":"Herbaceous veg","14":"Organic soil","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"10/4/2018","5":"277","6":"164.557","7":"598302","8":"4851605","9":"3","10":"0","11":"No water","12":"Stream/Canal","13":"Herbaceous veg","14":"Organic soil","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"10/10/2018","5":"283","6":"164.557","7":"598355","8":"4851519","9":"4","10":"0","11":"Unknown water","12":"Stream/Canal","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"10/17/2018","5":"290","6":"164.557","7":"598358","8":"4851527","9":"5","10":"0","11":"Deep water","12":"Stream/Canal","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"10/23/2018","5":"296","6":"164.557","7":"598357","8":"4851519","9":"6","10":"0","11":"Unknown water","12":"Stream/Canal","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"10/30/2018","5":"303","6":"164.557","7":"598381","8":"4851551","9":"7","10":"0","11":"Shallow water","12":"Stream/Canal","13":"Woody debris","14":"Organic soil","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"11/6/2018","5":"310","6":"164.557","7":"598340","8":"4851514","9":"8","10":"0","11":"Shallow water","12":"Stream/Canal","13":"Open","14":"Mineral soil","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"11/16/2018","5":"320","6":"164.557","7":"598366","8":"4851278","9":"9","10":"0","11":"Deep water","12":"Reservoir","13":"Open","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"11/19/2018","5":"323","6":"164.557","7":"598350","8":"4851525","9":"10","10":"0","11":"Deep water","12":"Reservoir","13":"Open","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"11/28/2018","5":"332","6":"164.557","7":"598324","8":"4851466","9":"11","10":"0","11":"Deep water","12":"Stream/Canal","13":"Open","14":"Mineral soil","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"9/25/2018","5":"268","6":"164.570","7":"597386","8":"4846473","9":"0","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/2/2018","5":"275","6":"164.570","7":"597334","8":"4846454","9":"1","10":"1","11":"Unknown water","12":"Marsh/Pond","13":"Open","14":"Organic soil","15":"Channel/runway","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/9/2018","5":"282","6":"164.570","7":"597343","8":"4846443","9":"2","10":"1","11":"Unknown water","12":"Marsh/Pond","13":"Woody debris","14":"Organic soil","15":"Channel/runway","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/15/2018","5":"288","6":"164.570","7":"597358","8":"4846460","9":"3","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Open","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/22/2018","5":"295","6":"164.570","7":"597339","8":"4846458","9":"4","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/1/2018","5":"305","6":"164.570","7":"597374","8":"4846484","9":"5","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/5/2018","5":"309","6":"164.570","7":"597374","8":"4846482","9":"6","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Open","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/13/2018","5":"317","6":"164.570","7":"597339","8":"4846474","9":"7","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/15/2018","5":"319","6":"164.570","7":"597346","8":"4846468","9":"8","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/18/2018","5":"322","6":"164.570","7":"597370","8":"4846467","9":"9","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Open","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/29/2018","5":"333","6":"164.570","7":"597341","8":"4846471","9":"10","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"9/13/2018","5":"256","6":"164.582","7":"594842","8":"4849435","9":"0","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"9/19/2018","5":"262","6":"164.582","7":"594820","8":"4849383","9":"1","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"9/26/2018","5":"269","6":"164.582","7":"594820","8":"4849388","9":"2","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/3/2018","5":"276","6":"164.582","7":"594698","8":"4849330","9":"3","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/10/2018","5":"283","6":"164.582","7":"594712","8":"4849310","9":"4","10":"1","11":"Deep water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/16/2018","5":"289","6":"164.582","7":"594630","8":"4849197","9":"5","10":"1","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/23/2018","5":"296","6":"164.582","7":"594601","8":"4849208","9":"6","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/30/2018","5":"303","6":"164.582","7":"594594","8":"4849220","9":"7","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/6/2018","5":"310","6":"164.582","7":"594595","8":"4849216","9":"8","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/14/2018","5":"318","6":"164.582","7":"594607","8":"4849196","9":"9","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/20/2018","5":"324","6":"164.582","7":"594607","8":"4849198","9":"10","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"11/29/2018","5":"333","6":"164.582","7":"594683","8":"4849239","9":"11","10":"1","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"9/18/2018","5":"261","6":"164.595","7":"597724","8":"4850712","9":"0","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"9/27/2018","5":"270","6":"164.595","7":"597753","8":"4850711","9":"1","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/4/2018","5":"277","6":"164.595","7":"597439","8":"4850769","9":"2","10":"1","11":"Deep water","12":"Reservoir","13":"Open","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/12/2018","5":"285","6":"164.595","7":"597453","8":"4850778","9":"3","10":"1","11":"Deep water","12":"Reservoir","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/17/2018","5":"290","6":"164.595","7":"597442","8":"4850783","9":"4","10":"1","11":"Deep water","12":"Reservoir","13":"Woody veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/24/2018","5":"297","6":"164.595","7":"597225","8":"4850836","9":"5","10":"1","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"10/31/2018","5":"304","6":"164.595","7":"597226","8":"4850837","9":"6","10":"1","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/7/2018","5":"311","6":"164.595","7":"597224","8":"4850836","9":"7","10":"1","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/15/2018","5":"319","6":"164.595","7":"597221","8":"4850834","9":"8","10":"1","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/19/2018","5":"323","6":"164.595","7":"597225","8":"4850832","9":"9","10":"1","11":"Shallow water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"N Res","3":"Reservoir","4":"11/28/2018","5":"332","6":"164.595","7":"597234","8":"4850821","9":"10","10":"1","11":"Deep water","12":"Reservoir","13":"Woody debris","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"9/28/2018","5":"271","6":"164.732","7":"597352","8":"4846484","9":"0","10":"1","11":"Shallow water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/2/2018","5":"275","6":"164.732","7":"597343","8":"4846462","9":"1","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/9/2018","5":"282","6":"164.732","7":"597341","8":"4846459","9":"2","10":"1","11":"Shallow water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/15/2018","5":"288","6":"164.732","7":"597345","8":"4846474","9":"3","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/22/2018","5":"295","6":"164.732","7":"597341","8":"4846464","9":"4","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/1/2018","5":"305","6":"164.732","7":"597366","8":"4846469","9":"5","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/5/2018","5":"309","6":"164.732","7":"597376","8":"4846467","9":"6","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/13/2018","5":"317","6":"164.732","7":"597347","8":"4846472","9":"7","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/18/2018","5":"322","6":"164.732","7":"597347","8":"4846460","9":"8","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/26/2018","5":"330","6":"164.732","7":"597355","8":"4846462","9":"9","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"9/25/2018","5":"268","6":"164.768","7":"597342","8":"4846488","9":"0","10":"1","11":"Shallow water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/2/2018","5":"275","6":"164.768","7":"597351","8":"4846488","9":"1","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/9/2018","5":"282","6":"164.768","7":"597374","8":"4846479","9":"2","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/15/2018","5":"288","6":"164.768","7":"597345","8":"4846483","9":"3","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/22/2018","5":"295","6":"164.768","7":"597339","8":"4846481","9":"4","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/29/2018","5":"302","6":"164.768","7":"597342","8":"4846482","9":"5","10":"1","11":"Shallow water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/5/2018","5":"309","6":"164.768","7":"597345","8":"4846479","9":"6","10":"1","11":"Shallow water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/13/2018","5":"317","6":"164.768","7":"597344","8":"4846480","9":"7","10":"1","11":"Shallow water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/18/2018","5":"322","6":"164.768","7":"597342","8":"4846480","9":"8","10":"1","11":"Shallow water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/26/2018","5":"330","6":"164.768","7":"597341","8":"4846485","9":"9","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"9/18/2018","5":"261","6":"164.796","7":"598392","8":"4851848","9":"0","10":"1","11":"No water","12":"Stream/Canal","13":"Herbaceous veg","14":"Mineral soil","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"9/20/2018","5":"263","6":"164.796","7":"598394","8":"4851843","9":"1","10":"1","11":"Shallow water","12":"Stream/Canal","13":"Herbaceous veg","14":"Mineral soil","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"9/28/2018","5":"271","6":"164.796","7":"598395","8":"4851840","9":"2","10":"1","11":"Shallow water","12":"Stream/Canal","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"10/4/2018","5":"277","6":"164.796","7":"598363","8":"4851978","9":"3","10":"1","11":"Deep water","12":"Stream/Canal","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"10/10/2018","5":"283","6":"164.796","7":"598362","8":"4851976","9":"4","10":"1","11":"Deep water","12":"Stream/Canal","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"10/16/2018","5":"289","6":"164.796","7":"598362","8":"4851974","9":"5","10":"1","11":"Deep water","12":"Stream/Canal","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"10/22/2018","5":"295","6":"164.796","7":"598357","8":"4851967","9":"6","10":"1","11":"Shallow water","12":"Stream/Canal","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"10/31/2018","5":"304","6":"164.796","7":"598354","8":"4851924","9":"7","10":"1","11":"Shallow water","12":"Stream/Canal","13":"Herbaceous veg","14":"Mineral soil","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"11/6/2018","5":"310","6":"164.796","7":"598360","8":"4851930","9":"8","10":"1","11":"Shallow water","12":"Stream/Canal","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"11/14/2018","5":"318","6":"164.796","7":"598351","8":"4851923","9":"9","10":"1","11":"Shallow water","12":"Stream/Canal","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"11/18/2018","5":"322","6":"164.796","7":"598355","8":"4851921","9":"10","10":"1","11":"Shallow water","12":"Stream/Canal","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"11/28/2018","5":"332","6":"164.796","7":"598358","8":"4851927","9":"11","10":"1","11":"Shallow water","12":"Stream/Canal","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"NE Res","3":"Reservoir","4":"10/11/2018","5":"284","6":"164.861","7":"599244","8":"4851726","9":"0","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"NE Res","3":"Reservoir","4":"10/17/2018","5":"290","6":"164.861","7":"599326","8":"4851544","9":"1","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"NE Res","3":"Reservoir","4":"10/24/2018","5":"297","6":"164.861","7":"599330","8":"4851533","9":"2","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"NE Res","3":"Reservoir","4":"10/30/2018","5":"303","6":"164.861","7":"599222","8":"4851584","9":"3","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"NE Res","3":"Reservoir","4":"11/5/2018","5":"309","6":"164.861","7":"599227","8":"4851584","9":"4","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"NE Res","3":"Reservoir","4":"11/16/2018","5":"320","6":"164.861","7":"599186","8":"4851591","9":"5","10":"1","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"NE Res","3":"Reservoir","4":"11/19/2018","5":"323","6":"164.861","7":"599196","8":"4851597","9":"6","10":"1","11":"Shallow water","12":"Reservoir","13":"Open","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"NE Res","3":"Reservoir","4":"11/28/2018","5":"332","6":"164.861","7":"599198","8":"4851597","9":"7","10":"1","11":"Shallow water","12":"Reservoir","13":"Open","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"NE Res","3":"Reservoir","4":"10/1/2018","5":"274","6":"164.941","7":"598995","8":"4851720","9":"0","10":"0","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Organic soil","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"NE Res","3":"Reservoir","4":"10/11/2018","5":"284","6":"164.941","7":"598941","8":"4851616","9":"1","10":"0","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"NE Res","3":"Reservoir","4":"10/17/2018","5":"290","6":"164.941","7":"598943","8":"4851621","9":"2","10":"0","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"NE Res","3":"Reservoir","4":"10/24/2018","5":"297","6":"164.941","7":"598943","8":"4851608","9":"3","10":"0","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"NE Res","3":"Reservoir","4":"10/30/2018","5":"303","6":"164.941","7":"598924","8":"4851610","9":"4","10":"0","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"NE Res","3":"Reservoir","4":"11/5/2018","5":"309","6":"164.941","7":"598925","8":"4851609","9":"5","10":"0","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"NE Res","3":"Reservoir","4":"11/16/2018","5":"320","6":"164.941","7":"598973","8":"4851564","9":"6","10":"0","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"NE Res","3":"Reservoir","4":"11/19/2018","5":"323","6":"164.941","7":"599029","8":"4851567","9":"7","10":"0","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"NE Res","3":"Reservoir","4":"11/28/2018","5":"332","6":"164.941","7":"599031","8":"4851566","9":"8","10":"0","11":"Shallow water","12":"Reservoir","13":"Open","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"9/25/2018","5":"268","6":"165.095","7":"597355","8":"4846490","9":"0","10":"1","11":"Shallow water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/2/2018","5":"275","6":"165.095","7":"597333","8":"4846450","9":"1","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"Channel/runway","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/9/2018","5":"282","6":"165.095","7":"597331","8":"4846456","9":"2","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"Burrow","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/15/2018","5":"288","6":"165.095","7":"597343","8":"4846445","9":"3","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"Burrow","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/22/2018","5":"295","6":"165.095","7":"597335","8":"4846452","9":"4","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"Burrow","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/1/2018","5":"305","6":"165.095","7":"597347","8":"4846475","9":"5","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/5/2018","5":"309","6":"165.095","7":"597345","8":"4846476","9":"6","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/13/2018","5":"317","6":"165.095","7":"597339","8":"4846477","9":"7","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/18/2018","5":"322","6":"165.095","7":"597341","8":"4846471","9":"8","10":"1","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/26/2018","5":"330","6":"165.095","7":"597337","8":"4846465","9":"9","10":"1","11":"Shallow water","12":"Marsh/Pond","13":"Open","14":"Unknown substrate","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"Cow Camp Pond","3":"Pond","4":"9/28/2018","5":"271","6":"165.120","7":"598349","8":"4851846","9":"0","10":"0","11":"Shallow water","12":"Marsh/Pond","13":"Open","14":"Flocc","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"10/3/2018","5":"276","6":"165.120","7":"598372","8":"4851868","9":"1","10":"0","11":"Shallow water","12":"Stream/Canal","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp River","3":"River","4":"10/10/2018","5":"283","6":"165.120","7":"598366","8":"4851873","9":"2","10":"0","11":"Shallow water","12":"Stream/Canal","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"9/26/2018","5":"269","6":"165.129","7":"596105","8":"4850437","9":"0","10":"0","11":"Shallow water","12":"Reservoir","13":"Herbaceous veg","14":"Flocc","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/3/2018","5":"276","6":"165.129","7":"595996","8":"4850526","9":"1","10":"0","11":"No water","12":"Non-aquatic","13":"Woody veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"W Res","3":"Reservoir","4":"10/10/2018","5":"283","6":"165.129","7":"595983","8":"4850550","9":"2","10":"0","11":"No water","12":"Non-aquatic","13":"Herbaceous veg","14":"Organic soil","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"9/28/2018","5":"271","6":"165.209","7":"597353","8":"4846490","9":"0","10":"0","11":"Shallow water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/2/2018","5":"275","6":"165.209","7":"597339","8":"4846455","9":"1","10":"0","11":"Deep water","12":"Marsh/Pond","13":"Open","14":"Organic soil","15":"Channel/runway","16":"Captured"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/9/2018","5":"282","6":"165.209","7":"597371","8":"4846478","9":"2","10":"0","11":"Shallow water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/15/2018","5":"288","6":"165.209","7":"597342","8":"4846455","9":"3","10":"0","11":"Deep water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"Burrow","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"10/22/2018","5":"295","6":"165.209","7":"597339","8":"4846475","9":"4","10":"0","11":"Shallow water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"Burrow","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/1/2018","5":"305","6":"165.209","7":"597364","8":"4846486","9":"5","10":"0","11":"No water","12":"Non-aquatic","13":"Woody debris","14":"Organic soil","15":"No beaver","16":"Captured"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/5/2018","5":"309","6":"165.209","7":"597385","8":"4846472","9":"6","10":"0","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/15/2018","5":"319","6":"165.209","7":"597390","8":"4846476","9":"7","10":"0","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/18/2018","5":"322","6":"165.209","7":"597386","8":"4846471","9":"8","10":"0","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"SE Pond","3":"Pond","4":"11/29/2018","5":"333","6":"165.209","7":"597395","8":"4846470","9":"9","10":"0","11":"Deep water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp Pond","3":"Pond","4":"9/12/2018","5":"255","6":"165.496","7":"598346","8":"4851850","9":"0","10":"0","11":"Shallow water","12":"Marsh/Pond","13":"Herbaceous veg","14":"Unknown substrate","15":"No beaver","16":"Visual"},{"1":"Crane Prairie","2":"Cow Camp Pond","3":"Pond","4":"9/18/2018","5":"261","6":"165.496","7":"598341","8":"4851846","9":"1","10":"0","11":"Deep water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp Pond","3":"Pond","4":"9/20/2018","5":"263","6":"165.496","7":"598345","8":"4851840","9":"2","10":"0","11":"Deep water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp Pond","3":"Pond","4":"9/27/2018","5":"270","6":"165.496","7":"598339","8":"4851844","9":"3","10":"0","11":"Unknown water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp Pond","3":"Pond","4":"10/3/2018","5":"276","6":"165.496","7":"598343","8":"4851843","9":"4","10":"0","11":"Unknown water","12":"Marsh/Pond","13":"Woody debris","14":"Unknown substrate","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp Pond","3":"Pond","4":"10/10/2018","5":"283","6":"165.496","7":"598338","8":"4851843","9":"5","10":"0","11":"Unknown water","12":"Marsh/Pond","13":"Woody debris","14":"Organic soil","15":"No beaver","16":"No visual"},{"1":"Crane Prairie","2":"Cow Camp Pond","3":"Pond","4":"10/16/2018","5":"289","6":"165.496","7":"598343","8":"4851838","9":"6","10":"0","11":"No water","12":"Marsh/Pond","13":"Woody debris","14":"Organic soil","15":"No beaver","16":"Visual"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>f</span> <span class='op'>|&gt;</span> <span class='fu'>count</span><span class='op'>(</span><span class='va'>HabType</span>, <span class='va'>Female</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code># A tibble: 6 × 3
+  HabType   Female     n
+  &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;
+1 Pond           0    29
+2 Pond           1    66
+3 Reservoir      0    32
+4 Reservoir      1   141
+5 River          0    26
+6 River          1    17</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>plot_df</span> <span class='op'>&lt;-</span> <span class='va'>f</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'>count</span><span class='op'>(</span><span class='va'>HabType</span>, <span class='va'>Female</span>, sort<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'>mutate</span><span class='op'>(</span>HabType <span class='op'>=</span> <span class='fu'>fct_reorder</span><span class='op'>(</span><span class='va'>HabType</span>, <span class='va'>n</span><span class='op'>)</span>,</span>
+<span>         Sex <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>Female</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'Male'</span>, <span class='st'>'Female'</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>plot_df</span> <span class='op'>|&gt;</span> <span class='fu'>paged_table</span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["HabType"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Female"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["n"],"name":[3],"type":["int"],"align":["right"]},{"label":["Sex"],"name":[4],"type":["fct"],"align":["left"]}],"data":[{"1":"Reservoir","2":"1","3":"141","4":"Female"},{"1":"Pond","2":"1","3":"66","4":"Female"},{"1":"Reservoir","2":"0","3":"32","4":"Male"},{"1":"Pond","2":"0","3":"29","4":"Male"},{"1":"River","2":"0","3":"26","4":"Male"},{"1":"River","2":"1","3":"17","4":"Female"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<h2 id="plotting">Plotting</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>plot_df</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='va'>HabType</span>, <span class='va'>n</span>, fill <span class='op'>=</span> <span class='va'>HabType</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'>geom_col</span><span class='op'>(</span>show.legend <span class='op'>=</span> <span class='cn'>F</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>Sex</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>labs</span><span class='op'>(</span>y<span class='op'>=</span><span class='st'>''</span>, x<span class='op'>=</span><span class='st'>''</span>, </span>
+<span>       title<span class='op'>=</span><span class='st'>'OREGON SPOTTED FROG'</span>, </span>
+<span>       subtitle<span class='op'>=</span><span class='st'>'HABITAT TYPE BY SEX'</span>,</span>
+<span>       caption<span class='op'>=</span><span class='st'>'Data: Oregon Spotted Frog | Tidytuesday W-31'</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>scale_fill_manual</span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#a2f1f2"</span>, <span class='st'>"#489cd4"</span>, <span class='st'>"#00b4b5"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>theme_ft_rc</span><span class='op'>(</span>grid <span class='op'>=</span> <span class='st'>'Y'</span>,</span>
+<span>              strip_text_size <span class='op'>=</span> <span class='fl'>20</span>,</span>
+<span>              caption_face <span class='op'>=</span> <span class='st'>'italic'</span>,</span>
+<span>              axis_text_size <span class='op'>=</span> <span class='fl'>15</span>,</span>
+<span>              subtitle_face <span class='op'>=</span> <span class='st'>"bold"</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>theme</span><span class='op'>(</span>axis.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>'white'</span><span class='op'>)</span>,</span>
+<span>        plot.subtitle <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>'#FF00BF'</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>plot1</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body-outset">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>plot1</span></span></code></pre>
+</div>
+<p><img src="week-31_files/figure-html5/unnamed-chunk-8-1.png" width="768" /></p>
+</div>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>

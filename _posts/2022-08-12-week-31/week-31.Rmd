@@ -1,0 +1,84 @@
+---
+title: "Week-31: Frogs"
+description: |
+  Exploring Oregon Spotted Frog Habitat.
+author:
+  - name: Oumarou Diallo
+date: 2022-08-12
+preview: osf.jpeg
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+---
+
+## Setup & Libraries
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+library(pacman)
+p_load(tidytuesdayR,tidyverse, scales, rmarkdown, hrbrthemes)
+
+```
+
+
+## Dataset
+
+### Loading
+```{r}
+tt <- tt_load("2022-08-02")
+```
+
+### Exploring and wrangling 
+
+```{r}
+# Sports categories
+tt %>% map(glimpse)
+```
+
+```{r}
+f <- tt$frogs;
+f |> paged_table()
+```
+
+```{r}
+f |> count(HabType, Female)
+```
+
+```{r}
+plot_df <- f |> 
+  count(HabType, Female, sort=TRUE) |> 
+  mutate(HabType = fct_reorder(HabType, n),
+         Sex = factor(Female, labels = c('Male', 'Female')))
+
+plot_df |> paged_table()
+
+```
+
+
+## Plotting
+
+```{r}
+plot_df |> 
+  ggplot(aes(HabType, n, fill = HabType)) + 
+  geom_col(show.legend = F)+
+  facet_wrap(~Sex)+
+  labs(y='', x='', 
+       title='OREGON SPOTTED FROG', 
+       subtitle='HABITAT TYPE BY SEX',
+       caption='Data: Oregon Spotted Frog | Tidytuesday W-31')+
+  scale_fill_manual(values = c("#a2f1f2", "#489cd4", "#00b4b5")) +
+  theme_ft_rc(grid = 'Y',
+              strip_text_size = 20,
+              caption_face = 'italic',
+              axis_text_size = 15,
+              subtitle_face = "bold")+
+  theme(axis.text = element_text(color = 'white'),
+        plot.subtitle = element_text(color = '#FF00BF')) -> plot1 
+
+```
+
+
+```{r, layout="l-body-outset", fig.width=8, fig.height=6}
+plot1
+```
