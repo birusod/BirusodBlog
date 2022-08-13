@@ -24,18 +24,18 @@ p_load(tidytuesdayR,tidyverse, scales, rmarkdown, hrbrthemes)
 
 ## Dataset
 
-[Week-31 tidytuesday data](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-08-02)
-[Frog Photo credit](https://californiaherps.com/frogs/images/rpretiosagl053.jpg)
+- [Week-31 tidytuesday data](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-08-02)
+
+- [Frog Photo credit](https://californiaherps.com/frogs/images/rpretiosagl053.jpg)
 
 ### Loading
-```{r}
+```{r echo = T, results = 'hide'}
 tt <- tt_load("2022-08-02")
 ```
 
 ### Exploring and wrangling 
 
-```{r}
-# Sports categories
+```{r echo = T, results = 'hide'}
 tt %>% map(glimpse)
 ```
 
@@ -52,7 +52,9 @@ f |> count(HabType, Female)
 plot_df <- f |> 
   count(HabType, Female, sort=TRUE) |> 
   mutate(HabType = fct_reorder(HabType, n),
-         Sex = factor(Female, labels = c('Male', 'Female')))
+         Sex = factor(Female, labels = c('Male', 'Female'))) |> 
+  select(HabType, Sex, Total = n) |> 
+  arrange(HabType, Sex)
 
 plot_df |> paged_table()
 
@@ -63,7 +65,7 @@ plot_df |> paged_table()
 
 ```{r}
 plot_df |> 
-  ggplot(aes(HabType, n, fill = HabType)) + 
+  ggplot(aes(HabType, Total, fill = HabType)) + 
   geom_col(show.legend = F)+
   facet_wrap(~Sex)+
   labs(y='', x='', 
